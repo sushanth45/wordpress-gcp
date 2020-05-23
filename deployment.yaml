@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: wordpress-demo
+  labels:
+    app: wordpress
+spec:
+  selector:
+    matchLabels:
+      app: wordpress
+      
+  template:
+    metadata:
+      labels:
+        app: wordpress
+     
+    spec:
+      containers:
+      - name: wordpress
+        image: us.gcr.io/kubernetes-sbk/wordpress
+        ports:
+                - containerPort: 8000
