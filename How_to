@@ -12,3 +12,9 @@ kubectl apply -f extSvc.yaml
 
 kubectl apply -f deployment.yaml
 
+################################
+Application Url ::
+###############################
+
+See file "WordPress_Url"
+
