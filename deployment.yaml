@@ -1,22 +1,27 @@
-apiVersion: apps/v1
+apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: wordpress-demo
   labels:
     app: wordpress
+  name: wordpress-demo
+  namespace: wordpress
 spec:
+  replicas: 1
   selector:
     matchLabels:
       app: wordpress
-      
   template:
     metadata:
       labels:
         app: wordpress
-     
     spec:
       containers:
-      - name: wordpress
+      - env:
+        - name: WORDPRESS_DB_PASSWORD
+          value: wordpress
         image: us.gcr.io/kubernetes-sbk/wordpress
+        imagePullPolicy: Always
+        name: wordpress
         ports:
-                - containerPort: 8000
+        - containerPort: 80
+          protocol: TCP
